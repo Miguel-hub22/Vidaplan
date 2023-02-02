@@ -14,11 +14,11 @@ public class Categorias {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotBlank(message = "O atributo tipo é obrigatorio!")
-	@Size(min = 5, max = 100, message = "O atributo tipo deve conter no minimo 05 caracteres")
+	@NotBlank(message = "O campo tipo é obrigatorio!")
+	@Size(min = 3, max = 20, message = "O atributo tipo deve conter no minimo 03 caracteres")
 	public String tipo;
-	@NotBlank(message = "O regiao tipo é obrigatorio!")
-	@Size(min = 10, max = 100, message = "O atributo regiao deve conter no minimo 10 caracteres")
+	@NotBlank(message = "O campo região é obrigatorio!")
+	@Size(min = 3, max = 15, message = "O atributo regiao deve conter no minimo 03 caracteres")
 	public String regiao;
 	
 	public Long getId() {
