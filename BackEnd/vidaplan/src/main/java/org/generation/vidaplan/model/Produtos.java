@@ -39,61 +39,54 @@ public class Produtos {
 	@ManyToOne
 	@JsonIgnoreProperties ("produtos")
 	private Categorias categorias;
-
+	//private Usuarios usuarios;
+	
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 	public BigDecimal getPreco() {
 		return preco;
 	}
-
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-
 	public String getEmbalagem() {
 		return embalagem;
 	}
-
 	public void setEmbalagem(String embalagem) {
 		this.embalagem = embalagem;
 	}
-
 	public String getDicasPlantacao() {
 		return dicasPlantacao;
 	}
-
 	public void setDicasPlantacao(String dicasPlantacao) {
 		this.dicasPlantacao = dicasPlantacao;
 	}
-
 	public Categorias getCategorias() {
 		return categorias;
 	}
-
 	public void setCategorias(Categorias categorias) {
 		this.categorias = categorias;
 	}
-
+	/*public Usuarios getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(Usuarios usuarios) {
+		this.usuarios = usuarios;
+	}*/
 }
