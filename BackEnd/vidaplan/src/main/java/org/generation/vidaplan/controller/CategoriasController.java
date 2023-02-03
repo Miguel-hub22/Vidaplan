@@ -46,11 +46,6 @@ public class CategoriasController {
 		return ResponseEntity.ok
 				(repository.findAllByTipoContainingIgnoreCase(tipo));
 	}
-	@GetMapping("/regiao/{regiao}")
-	public ResponseEntity<List<Categorias>> GetByRegiao(@PathVariable String regiao){
-		return ResponseEntity.ok
-				(repository.findAllByRegiaoContainingIgnoreCase(regiao));
-	}
 	@PostMapping
 	public ResponseEntity<Categorias>post(@Valid @RequestBody Categorias categorias){
 		return ResponseEntity.status(HttpStatus.CREATED)

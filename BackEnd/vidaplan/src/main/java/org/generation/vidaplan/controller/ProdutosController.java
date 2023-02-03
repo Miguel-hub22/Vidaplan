@@ -1,5 +1,6 @@
 package org.generation.vidaplan.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,14 +42,22 @@ public class ProdutosController {
 			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Produtos>> GetByNome(@PathVariable String nome){
+	public ResponseEntity<List<Produtos>> GetByNome
+	(@PathVariable String nome){
 		return ResponseEntity.ok
 				(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
-	@GetMapping("/embalagem/{embalagem}")
-	public ResponseEntity<List<Produtos>> GetByEmbalagem(@PathVariable String embalagem){
+	@GetMapping("/preco/{preco}")
+	public ResponseEntity<List<Produtos>> GetByPreco
+	(@PathVariable BigDecimal preco){
 		return ResponseEntity.ok
-				(repository.findAllByEmbalagemContainingIgnoreCase(embalagem));
+				(repository.findAllByPreco(preco));
+	}
+	@GetMapping("/regiao/{regiao}")
+	public ResponseEntity<List<Produtos>> GetByRegiao
+	(@PathVariable String regiao){
+		return ResponseEntity.ok
+				(repository.findAllByRegiaoContainingIgnoreCase(regiao));
 	}
 	@PostMapping
 	public ResponseEntity<Produtos>post(@Valid @RequestBody Produtos produtos){

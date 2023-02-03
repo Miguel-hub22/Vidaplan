@@ -24,9 +24,6 @@ public class Categorias {
 	@NotBlank(message = "O campo tipo é obrigatorio!")
 	@Size(min = 3, max = 20, message = "O atributo tipo deve conter no minimo 03 caracteres")
 	public String tipo;
-	@NotBlank(message = "O campo região é obrigatorio!")
-	@Size(min = 3, max = 15, message = "O atributo regiao deve conter no minimo 03 caracteres")
-	public String regiao;
 	
 	@OneToMany(mappedBy = "categorias", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ("categorias")
@@ -48,17 +45,11 @@ public class Categorias {
 		this.tipo = tipo;
 	}
 
-	public String getRegiao() {
-		return regiao;
-	}
-
-	public void setRegiao(String regiao) {
-		this.regiao = regiao;
+	public List<Produtos> getProdutos() {
+		return produtos;
 	}
 
 	public void setProdutos(List<Produtos> produtos) {
 		this.produtos = produtos;
 	}
-	
-	
 }

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_produtos")
 public class Produtos {
-		
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,9 +25,10 @@ public class Produtos {
 	@Size (min = 3, max = 40, message = "O campo nome deve ter no minimo 03 caracteres")
 	public String nome;
 	@NotBlank (message = "O campo descrição é obrigatório")
-	@Size (min = 10, max = 500, message = "O campo descrição deve ter no minimo 10 caracteres")
+	@Size (min = 10, max = 1500, message = "O campo descrição deve ter no minimo 10 caracteres")
 	public String descricao;
 	@NotNull
+	//@NumberFormat(style = Style.CURRENCY)
 	public BigDecimal preco;
 	@NotBlank (message = "O campo embalagem é obrigatório")
 	@Size (min = 4, max = 30, message = "O campo embalagem deve ter no minimo 10 caracteres")
@@ -35,11 +36,16 @@ public class Produtos {
 	@NotBlank (message = "O campo dicas de plantação é obrigatório")
 	@Size (min = 10, max = 500, message = "O campo dicas de plantação deve ter no minimo 10 caracteres")
 	public String dicasPlantacao;
+	@NotBlank(message = "O campo região é obrigatorio!")
+	@Size(min = 3, max = 15, message = "O atributo regiao deve conter no minimo 03 caracteres")
+	public String regiao;
 	
 	@ManyToOne
 	@JsonIgnoreProperties ("produtos")
 	private Categorias categorias;
-	//private Usuarios usuarios;
+	@ManyToOne
+	@JsonIgnoreProperties ("produtos")
+	private Usuarios usuarios;
 	
 	public Long getId() {
 		return id;
@@ -83,10 +89,19 @@ public class Produtos {
 	public void setCategorias(Categorias categorias) {
 		this.categorias = categorias;
 	}
-	/*public Usuarios getUsuarios() {
+	public Usuarios getUsuarios() {
 		return usuarios;
 	}
 	public void setUsuarios(Usuarios usuarios) {
 		this.usuarios = usuarios;
-	}*/
+	}
+	public String getRegiao() {
+		return regiao;
+	}
+	public void setRegiao(String regiao) {
+		this.regiao = regiao;
+	}
+	
 }
+	
+	
