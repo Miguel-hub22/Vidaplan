@@ -45,7 +45,7 @@ public class Produtos {
 	private Categorias categorias;
 	@ManyToOne
 	@JsonIgnoreProperties ("produtos")
-	private Usuarios usuarios;
+	private Usuario usuario;
 	
 	public Long getId() {
 		return id;
@@ -89,11 +89,11 @@ public class Produtos {
 	public void setCategorias(Categorias categorias) {
 		this.categorias = categorias;
 	}
-	public Usuarios getUsuarios() {
-		return usuarios;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setUsuarios(Usuarios usuarios) {
-		this.usuarios = usuarios;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	public String getRegiao() {
 		return regiao;

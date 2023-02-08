@@ -17,16 +17,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_categorias")
 public class Categorias {
-		
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank(message = "O campo tipo é obrigatorio!")
 	@Size(min = 3, max = 20, message = "O atributo tipo deve conter no minimo 03 caracteres")
 	public String tipo;
-	
+
 	@OneToMany(mappedBy = "categorias", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties ("categorias")
+	@JsonIgnoreProperties("categorias")
 	private List<Produtos> produtos;
 
 	public Long getId() {
