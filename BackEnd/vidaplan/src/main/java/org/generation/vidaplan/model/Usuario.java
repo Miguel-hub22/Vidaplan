@@ -9,36 +9,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table (name = "tb_usuarios")
-public class Usuarios {
+@Table(name = "tb_usuarios")
+public class Usuario {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotBlank (message = "O campo nome é obrigatório")
-	@Size (min = 3, max = 40, message = "O campo nome deve ter no minimo 03 caracteres")
+
+	@NotNull(message = "O campo nome é obrigatório")
 	public String nome;
-	@NotBlank (message = "O campo usuário é obrigatório")
-	@Size (min = 5, max = 40, message = "O campo usuário deve ter no minimo 05 caracteres")
-	public String usuarioEmail;
-	@NotBlank (message = "O campo cpf é obrigatório")
-	@Size (min = 10, max = 11, message = "O campo cpf deve ter no minimo 10 caracteres")
+
+	@NotNull(message = "O campo usuário é obrigatório")
+	@Email(message = "O Atributo Usuário deve ser um email válido!")
+	public String usuario;
+
+	@NotBlank(message = "O campo cpf é obrigatório")
+	@Size(min = 10, message = "O campo cpf deve ter no minimo 10 caracteres")
 	public String cpf;
-	//@NotBlank (message = "O campo endereço é obrigatório")
-	@Size (min = 10, max = 50, message = "O campo endereço deve ter no minimo 10 caracteres")
+
+	// @NotBlank (message = "O campo endereço é obrigatório")
 	public String endereco;
-	@NotBlank (message = "O campo senha é obrigatório")
-	@Size (min = 06, max = 50, message = "O campo senha deve ter no minimo 06 caracteres")
+
+	@NotBlank(message = "O campo senha é obrigatório")
+	@Size(min = 06, message = "O campo senha deve ter no minimo 06 caracteres")
 	public String senha;
-	
-	@OneToMany(mappedBy = "usuarios", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties ("usuarios")
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
 	private List<Produtos> produtos;
 
 	public Long getId() {
@@ -57,12 +62,12 @@ public class Usuarios {
 		this.nome = nome;
 	}
 
-	public String getUsuarioEmail() {
-		return usuarioEmail;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuarioEmail(String usuarioEmail) {
-		this.usuarioEmail = usuarioEmail;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getCpf() {
