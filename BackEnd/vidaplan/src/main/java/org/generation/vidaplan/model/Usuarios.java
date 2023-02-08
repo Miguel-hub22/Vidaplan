@@ -30,7 +30,7 @@ public class Usuarios {
 	@NotBlank (message = "O campo cpf é obrigatório")
 	@Size (min = 10, max = 11, message = "O campo cpf deve ter no minimo 10 caracteres")
 	public String cpf;
-	@NotBlank (message = "O campo endereço é obrigatório")
+	//@NotBlank (message = "O campo endereço é obrigatório")
 	@Size (min = 10, max = 50, message = "O campo endereço deve ter no minimo 10 caracteres")
 	public String endereco;
 	@NotBlank (message = "O campo senha é obrigatório")
